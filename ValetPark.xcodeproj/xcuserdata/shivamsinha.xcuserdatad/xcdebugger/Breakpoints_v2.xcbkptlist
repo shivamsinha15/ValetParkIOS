@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ValetPark/ASValueTrackingSlider.h"
+            timestampString = "412570013.460548"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "36"
+            endingLineNumber = "36"
+            landmarkName = "timeIntervalAtSliderValue"
+            landmarkType = "19">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[ASValueTrackingSlider timeIntervalAtSliderValue]"
+                  moduleName = "ValetPark"
+                  urlString = "file:///Users/shivamsinha/Desktop/TreeHouse%20Academy/ObjectiveCProject/ValetPark/ValetPark/ASValueTrackingSlider.h"
+                  timestampString = "412570749.112545"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "36"
+                  endingLineNumber = "36"
+                  offsetFromSymbolStart = "24">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[ASValueTrackingSlider setTimeIntervalAtSliderValue:]"
+                  moduleName = "ValetPark"
+                  urlString = "file:///Users/shivamsinha/Desktop/TreeHouse%20Academy/ObjectiveCProject/ValetPark/ValetPark/ASValueTrackingSlider.h"
+                  timestampString = "412570749.112781"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "36"
+                  endingLineNumber = "36"
+                  offsetFromSymbolStart = "58">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>

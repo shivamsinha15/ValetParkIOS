@@ -27,4 +27,12 @@
 // take full control of the format dispayed with a custom NSNumberFormatter
 - (void)setNumberFormatter:(NSNumberFormatter *)numberFormatter;
 
+
+// DisplayDate
+@property (strong,nonatomic)NSDate *currentTime;
+@property (strong,nonatomic)NSDateFormatter *dateFormatter;
+@property (weak,nonatomic)NSString *timeStamp;
+@property (weak,nonatomic)NSDate *timeAtSliderValue;
+@property NSTimeInterval timeIntervalAtSliderValue;
+
 @end

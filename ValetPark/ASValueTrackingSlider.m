@@ -8,7 +8,7 @@
 
 #import "ASValueTrackingSlider.h"
 
-#define ARROW_LENGTH 13
+#define ARROW_LENGTH 10
 
 @interface ASValuePopUpView : UIView
 - (void)setString:(NSAttributedString *)string;
@@ -151,7 +151,7 @@
 @property (strong, nonatomic) NSMutableAttributedString *attributedString;
 @end
 
-#define MIN_POPUPVIEW_WIDTH 36.0
+#define MIN_POPUPVIEW_WIDTH 140.0
 #define MIN_POPUPVIEW_HEIGHT 27.0
 #define POPUPVIEW_WIDTH_INSET 10.0
 
@@ -344,12 +344,31 @@
 
     self.popUpView.frame = popUpRect;
     
-    NSString *string = [_numberFormatter stringFromNumber:@(self.value)];
-    [[self.attributedString mutableString] setString:string];
+    //NSString *string = [_numberFormatter stringFromNumber:@(self.value)];
+    
+    [self buildTimeStamp];
+    [[self.attributedString mutableString] setString:self.timeStamp];
     [self.popUpView setString:self.attributedString];
     
     [self.popUpView setAnimationOffset:[self currentValueOffset]];
 }
+
+- (void)buildTimeStamp{
+    int valueAsInt = self.value;
+     /* NSLog(@"Float: %f",self.value);
+        NSLog(@"INT: %d",valueAsInt);*/
+    
+    if(valueAsInt == 0){
+        self.timeStamp = @"Current Time";
+    } else {
+        self.timeIntervalAtSliderValue = valueAsInt * 60 * 15;
+        self.timeAtSliderValue = [self.currentTime dateByAddingTimeInterval:self.timeIntervalAtSliderValue];
+        self.timeStamp = [self.dateFormatter stringFromDate:self.timeAtSliderValue];
+    }
+        
+}
+
+
 
 - (void)calculatePopUpViewSize
 {
@@ -383,6 +402,7 @@
 {
     BOOL begin = [super beginTrackingWithTouch:touch withEvent:event];
     if (begin) {
+        [self initDateObjects];
         [self positionAndUpdatePopUpView];
         [self showPopUp];
     }
@@ -402,11 +422,21 @@
     [self hidePopUp];
 }
 
+- (void)initDateObjects{
+    self.currentTime = [NSDate date];
+    self.dateFormatter = [[NSDateFormatter alloc] init];
+    [self.dateFormatter setDateFormat:@"EEE hh':'mm a"];
+    //NSString *currentTimeAsString = [self.dateFormatter stringFromDate:self.currentTime];
+    //NSLog(@"Current Time: %@",currentTimeAsString);
+
+}
+
 - (void)endTrackingWithTouch:(UITouch *)touch withEvent:(UIEvent *)event
 {
     [super endTrackingWithTouch:touch withEvent:event];
     [self positionAndUpdatePopUpView];
     [self hidePopUp];
 }
+
 
 @end
