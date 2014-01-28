@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		699011AD1897CCE300496777 /* SSPESpaceModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 699011AC1897CCE300496777 /* SSPESpaceModel.m */; };
+		699011B01897CE9900496777 /* SSPERuleModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 699011AF1897CE9900496777 /* SSPERuleModel.m */; };
 		69DD4A6318971EB000DB7365 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69DD4A6218971EB000DB7365 /* Foundation.framework */; };
 		69DD4A6518971EB000DB7365 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69DD4A6418971EB000DB7365 /* CoreGraphics.framework */; };
 		69DD4A6718971EB000DB7365 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69DD4A6618971EB000DB7365 /* UIKit.framework */; };
@@ -50,6 +52,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		699011AB1897CCE300496777 /* SSPESpaceModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSPESpaceModel.h; sourceTree = "<group>"; };
+		699011AC1897CCE300496777 /* SSPESpaceModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSPESpaceModel.m; sourceTree = "<group>"; };
+		699011AE1897CE9900496777 /* SSPERuleModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSPERuleModel.h; sourceTree = "<group>"; };
+		699011AF1897CE9900496777 /* SSPERuleModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSPERuleModel.m; sourceTree = "<group>"; };
 		69DD4A5F18971EB000DB7365 /* ValetPark.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ValetPark.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		69DD4A6218971EB000DB7365 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		69DD4A6418971EB000DB7365 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -175,6 +181,10 @@
 			children = (
 				69DD4AB518972A6200DB7365 /* SSGoogleViewController.h */,
 				69DD4AB618972A6200DB7365 /* SSGoogleViewController.m */,
+				699011AB1897CCE300496777 /* SSPESpaceModel.h */,
+				699011AE1897CE9900496777 /* SSPERuleModel.h */,
+				699011AF1897CE9900496777 /* SSPERuleModel.m */,
+				699011AC1897CCE300496777 /* SSPESpaceModel.m */,
 				69DD4A7118971EB000DB7365 /* SSAppDelegate.h */,
 				69DD4A7218971EB000DB7365 /* SSAppDelegate.m */,
 				69DD4A7418971EB000DB7365 /* Images.xcassets */,
@@ -318,7 +328,9 @@
 				69DD4AB1189729DE00DB7365 /* SSMainViewController.m in Sources */,
 				69DD4AB718972A6200DB7365 /* SSGoogleViewController.m in Sources */,
 				69DD4ABA18972D2A00DB7365 /* ASValueTrackingSlider.m in Sources */,
+				699011AD1897CCE300496777 /* SSPESpaceModel.m in Sources */,
 				69DD4A7318971EB000DB7365 /* SSAppDelegate.m in Sources */,
+				699011B01897CE9900496777 /* SSPERuleModel.m in Sources */,
 				69DD4A6F18971EB000DB7365 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -440,7 +452,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"/Users/shivamsinha/Desktop/TreeHouse\\ Academy/ObjectiveCProject/ValetPark",
+					"/Users/shivamsinha/Desktop/TreeHouse\\ Academy/ObjectiveCProject/ValetParkIOS",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ValetPark/ValetPark-Prefix.pch";
@@ -459,7 +471,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"/Users/shivamsinha/Desktop/TreeHouse\\ Academy/ObjectiveCProject/ValetPark",
+					"/Users/shivamsinha/Desktop/TreeHouse\\ Academy/ObjectiveCProject/ValetParkIOS",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ValetPark/ValetPark-Prefix.pch";
@@ -532,6 +544,7 @@
 				69DD4A8D18971EB000DB7365 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		69DD4A8E18971EB000DB7365 /* Build configuration list for PBXNativeTarget "ValetParkTests" */ = {
 			isa = XCConfigurationList;
@@ -540,6 +553,7 @@
 				69DD4A9018971EB000DB7365 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

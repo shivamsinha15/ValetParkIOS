@@ -10,4 +10,7 @@
 
 @interface SSGoogleViewController : UIViewController
 
+@property(strong,nonatomic) NSMutableArray *peSpaces;
+@property(strong,nonatomic) NSMutableArray *peRules;
+
 @end

@@ -28,10 +28,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	self.timeSlider.maximumValue = 670;
-    self.timeSlider.popUpViewColor = [UIColor colorWithHue:0.61 saturation:1 brightness:0.9 alpha:0.8];
-    self.timeSlider.textColor = [UIColor colorWithHue:0.65 saturation:1 brightness:0.4 alpha:1];
-    self.timeSlider.font = [UIFont fontWithName:@"Menlo-Bold" size:15];
+    [self initTimeSlider];
+
 }
 
 - (void)didReceiveMemoryWarning
@@ -40,4 +38,11 @@
     // Dispose of any resources that can be recreated.
 }
 
+
+-(void)initTimeSlider{
+    self.timeSlider.maximumValue = 670;
+    self.timeSlider.popUpViewColor = [UIColor colorWithHue:0.61 saturation:1 brightness:0.9 alpha:0.8];
+    self.timeSlider.textColor = [UIColor colorWithHue:0.65 saturation:1 brightness:0.4 alpha:1];
+    self.timeSlider.font = [UIFont fontWithName:@"Menlo-Bold" size:15];
+}
 @end
