@@ -17,6 +17,9 @@
 
 @implementation SSGoogleViewController {
     GMSMapView *mapView_;
+    UIColor *red;
+    UIColor *green;
+    
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -33,14 +36,54 @@
     [super viewDidLoad];
     [self displayMap];
     [self initaliseParkingData];
+    [self showPeSpacesOnMap];
     
     
 }
 
 
+-(void) showPeSpacesOnMap{
+   for(SSPESpaceModel *peSpace in self.peSpaces){
+        [self drawPloyLines:peSpace.startLat :peSpace.startLng :peSpace.endLat :peSpace.endLng :peSpace.occupied];
+    }
+
+//    
+//    SSPESpaceModel *peSpace = [self.peSpaces objectAtIndex:0];
+//    [self drawPloyLines:peSpace.startLat :peSpace.startLng :peSpace.endLat :peSpace.endLng :peSpace.occupied];
+}
+
+-(void) drawPloyLines: (double)startLat :(double)startLng :(double)endLat :(double)endLng :(BOOL)occupied{
+        GMSMutablePath *path = [GMSMutablePath path];
+//        NSLog(@"startLat %e",startLat);
+//        NSLog(@"startLng %e",startLng);
+//        NSLog(@"endLat %e",endLat);
+//        NSLog(@"endLng %e",endLng);
+       [path addLatitude:startLat longitude:startLng];
+       [path addLatitude:endLat longitude:endLng];
+
+    //uicolor.org
+       GMSPolyline *polyline = [GMSPolyline polylineWithPath:path];
+    
+    if(occupied){
+        polyline.strokeColor = red;
+    } else {
+        polyline.strokeColor = green;
+    }
+
+    polyline.strokeWidth = 10.f;
+    polyline.map = mapView_;
+}
+
 - (void) initaliseParkingData{
+    [self initColors];
     [self initPESpaces];
     [self initPERules];
+}
+
+- (void) initColors{
+    green = [UIColor colorWithRed:61/255.0f green:176/255.0f blue:7/255.0f alpha:1.0f];
+    red = [UIColor colorWithRed:229/255.0f green:75/255.0f blue:24/255.0f alpha:1.0f];
+
 }
 
 - (void) initPESpaces{
@@ -83,7 +126,9 @@
     NSURL *peModelUrl = [NSURL URLWithString:urlString];
     NSData *jsonData = [NSData dataWithContentsOfURL:peModelUrl];
     NSError *errors = nil;
-    
+    if(errors){
+        return nil;
+    }
     return [NSJSONSerialization JSONObjectWithData:jsonData options:0 error:&errors];
 }
 
@@ -96,9 +141,9 @@
 - (void)displayMap{
     // Create a GMSCameraPosition that tells the map to display the
     // coordinate -33.86,151.20 at zoom level 6.
-    GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:-33.86
-                                                            longitude:151.20
-                                                                 zoom:6];
+    GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:-33.814460029617955
+                                                            longitude:151.00626159872712
+                                                                 zoom:18];
     mapView_ = [GMSMapView mapWithFrame:CGRectZero camera:camera];
     mapView_.myLocationEnabled = YES;
     self.view = mapView_;

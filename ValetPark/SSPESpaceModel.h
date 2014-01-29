@@ -11,10 +11,10 @@
 @interface SSPESpaceModel : NSObject
 
 @property int id;
-@property float startLat;
-@property float startLng;
-@property float endLat;
-@property float endLng;
+@property double startLat;
+@property double startLng;
+@property double endLat;
+@property double endLng;
 @property float bearing;
 
 @property (strong,nonatomic) NSString *address;

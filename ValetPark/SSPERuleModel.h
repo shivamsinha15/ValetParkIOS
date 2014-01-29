@@ -21,15 +21,6 @@
 @property double cost;
 
 
-
-@property float startLat;
-@property float startLng;
-@property float endLat;
-@property float endLng;
-@property float bearing;
-
-
-
 @property BOOL occupied;
 
 

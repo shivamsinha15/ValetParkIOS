@@ -19,6 +19,7 @@
                             <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="z9H-fU-OIa">
                                 <rect key="frame" x="-7" y="25" width="327" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <color key="barTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <items>
                                     <navigationItem id="bQ5-5i-4Se">
                                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="GdW-IP-DYA"/>
@@ -30,10 +31,10 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <items>
-                                    <tabBarItem title="Item" id="8l2-Pd-ELt"/>
                                     <tabBarItem systemItem="favorites" id="0NU-2L-TRs"/>
                                     <tabBarItem systemItem="more" id="ZXX-wo-aBd"/>
                                 </items>
+                                <color key="barTintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                             </tabBar>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Valet Park" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nGM-sd-pdW">
                                 <rect key="frame" x="82" y="29" width="157" height="35"/>
@@ -53,7 +54,7 @@
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="p6G-CE-1Qf">
                                 <rect key="frame" x="0.0" y="475" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                                <color key="backgroundColor" red="0.27438455769999998" green="0.3930209523" blue="0.90828804350000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.32726567816826763" green="0.59856570732511127" blue="0.90828804350000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <items>
                                     <barButtonItem enabled="NO" systemItem="add" id="Oyz-Pg-iPB"/>
                                     <barButtonItem style="plain" id="UkU-eU-sie">
