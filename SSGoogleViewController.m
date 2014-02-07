@@ -35,8 +35,18 @@
 {
     [super viewDidLoad];
     [self displayMap];
-    [self initaliseParkingData];
-    [self showPeSpacesOnMap];
+    
+    @try {
+        [self initaliseParkingData];
+        [self showPeSpacesOnMap];
+    }
+    @catch (NSException *exception) {
+        NSLog(@"Exception: %@", exception);
+    }
+    @finally {
+         NSLog(@"finally");
+    }
+
     
     
 }

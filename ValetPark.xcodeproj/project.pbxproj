@@ -39,6 +39,12 @@
 		69DD4AB1189729DE00DB7365 /* SSMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 69DD4AB0189729DE00DB7365 /* SSMainViewController.m */; };
 		69DD4AB718972A6200DB7365 /* SSGoogleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 69DD4AB618972A6200DB7365 /* SSGoogleViewController.m */; };
 		69DD4ABA18972D2A00DB7365 /* ASValueTrackingSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 69DD4AB918972D2A00DB7365 /* ASValueTrackingSlider.m */; };
+		69DD572118990FC3005E11D0 /* 06-magnify.png in Resources */ = {isa = PBXBuildFile; fileRef = 69DD572018990FC3005E11D0 /* 06-magnify.png */; };
+		69DD572318990FCB005E11D0 /* 07-map-marker.png in Resources */ = {isa = PBXBuildFile; fileRef = 69DD572218990FCB005E11D0 /* 07-map-marker.png */; };
+		69DD572518990FE8005E11D0 /* 152-rolodex.png in Resources */ = {isa = PBXBuildFile; fileRef = 69DD572418990FE8005E11D0 /* 152-rolodex.png */; };
+		69DD572818991769005E11D0 /* SSNavigationControlerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 69DD572718991769005E11D0 /* SSNavigationControlerViewController.m */; };
+		69DD572B18991885005E11D0 /* SSSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 69DD572A18991885005E11D0 /* SSSearchViewController.m */; };
+		69DD572E18991890005E11D0 /* SSPaymentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 69DD572D18991890005E11D0 /* SSPaymentViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -93,6 +99,15 @@
 		69DD4AB618972A6200DB7365 /* SSGoogleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SSGoogleViewController.m; path = ../SSGoogleViewController.m; sourceTree = "<group>"; };
 		69DD4AB818972D2A00DB7365 /* ASValueTrackingSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASValueTrackingSlider.h; sourceTree = "<group>"; };
 		69DD4AB918972D2A00DB7365 /* ASValueTrackingSlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASValueTrackingSlider.m; sourceTree = "<group>"; };
+		69DD572018990FC3005E11D0 /* 06-magnify.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "06-magnify.png"; sourceTree = "<group>"; };
+		69DD572218990FCB005E11D0 /* 07-map-marker.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "07-map-marker.png"; sourceTree = "<group>"; };
+		69DD572418990FE8005E11D0 /* 152-rolodex.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "152-rolodex.png"; sourceTree = "<group>"; };
+		69DD572618991769005E11D0 /* SSNavigationControlerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSNavigationControlerViewController.h; sourceTree = "<group>"; };
+		69DD572718991769005E11D0 /* SSNavigationControlerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSNavigationControlerViewController.m; sourceTree = "<group>"; };
+		69DD572918991885005E11D0 /* SSSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSSearchViewController.h; sourceTree = "<group>"; };
+		69DD572A18991885005E11D0 /* SSSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSSearchViewController.m; sourceTree = "<group>"; };
+		69DD572C18991890005E11D0 /* SSPaymentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSPaymentViewController.h; sourceTree = "<group>"; };
+		69DD572D18991890005E11D0 /* SSPaymentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSPaymentViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -188,8 +203,15 @@
 				69DD4A7118971EB000DB7365 /* SSAppDelegate.h */,
 				69DD4A7218971EB000DB7365 /* SSAppDelegate.m */,
 				69DD4A7418971EB000DB7365 /* Images.xcassets */,
+				69DD571F18990FAB005E11D0 /* Resources */,
 				69DD4A6918971EB000DB7365 /* Supporting Files */,
 				69DD4A9118971EE000DB7365 /* MainStoryboard.storyboard */,
+				69DD572918991885005E11D0 /* SSSearchViewController.h */,
+				69DD572A18991885005E11D0 /* SSSearchViewController.m */,
+				69DD572C18991890005E11D0 /* SSPaymentViewController.h */,
+				69DD572D18991890005E11D0 /* SSPaymentViewController.m */,
+				69DD572618991769005E11D0 /* SSNavigationControlerViewController.h */,
+				69DD572718991769005E11D0 /* SSNavigationControlerViewController.m */,
 				69DD4AAF189729DE00DB7365 /* SSMainViewController.h */,
 				69DD4AB0189729DE00DB7365 /* SSMainViewController.m */,
 			);
@@ -225,6 +247,16 @@
 				69DD4A8418971EB000DB7365 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		69DD571F18990FAB005E11D0 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				69DD572418990FE8005E11D0 /* 152-rolodex.png */,
+				69DD572218990FCB005E11D0 /* 07-map-marker.png */,
+				69DD572018990FC3005E11D0 /* 06-magnify.png */,
+			);
+			name = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -305,8 +337,11 @@
 			files = (
 				69DD4A9218971EE000DB7365 /* MainStoryboard.storyboard in Resources */,
 				69DD4A6D18971EB000DB7365 /* InfoPlist.strings in Resources */,
+				69DD572518990FE8005E11D0 /* 152-rolodex.png in Resources */,
 				69DD4A7518971EB000DB7365 /* Images.xcassets in Resources */,
+				69DD572118990FC3005E11D0 /* 06-magnify.png in Resources */,
 				69DD4A96189720EA00DB7365 /* GoogleMaps.bundle in Resources */,
+				69DD572318990FCB005E11D0 /* 07-map-marker.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -325,13 +360,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				69DD572B18991885005E11D0 /* SSSearchViewController.m in Sources */,
 				69DD4AB1189729DE00DB7365 /* SSMainViewController.m in Sources */,
 				69DD4AB718972A6200DB7365 /* SSGoogleViewController.m in Sources */,
 				69DD4ABA18972D2A00DB7365 /* ASValueTrackingSlider.m in Sources */,
 				699011AD1897CCE300496777 /* SSPESpaceModel.m in Sources */,
 				69DD4A7318971EB000DB7365 /* SSAppDelegate.m in Sources */,
+				69DD572818991769005E11D0 /* SSNavigationControlerViewController.m in Sources */,
 				699011B01897CE9900496777 /* SSPERuleModel.m in Sources */,
 				69DD4A6F18971EB000DB7365 /* main.m in Sources */,
+				69DD572E18991890005E11D0 /* SSPaymentViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

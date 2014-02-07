@@ -8,6 +8,9 @@
 
 #import "SSMainViewController.h"
 #import "ASValueTrackingSlider.h"
+#import "SSSearchViewController.h"
+#import "SSPaymentViewController.h"
+
 
 @interface SSMainViewController ()
 @property (weak, nonatomic) IBOutlet ASValueTrackingSlider *timeSlider;
@@ -29,6 +32,8 @@
 {
     [super viewDidLoad];
     [self initTimeSlider];
+    self.navigationController.navigationBarHidden = TRUE;
+    
 
 }
 
@@ -44,5 +49,20 @@
     self.timeSlider.popUpViewColor = [UIColor colorWithHue:0.61 saturation:1 brightness:0.9 alpha:0.8];
     self.timeSlider.textColor = [UIColor colorWithHue:0.65 saturation:1 brightness:0.4 alpha:1];
     self.timeSlider.font = [UIFont fontWithName:@"Menlo-Bold" size:15];
+}
+
+- (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    NSLog(@"Segue Identifier: %@",[segue identifier]);
+    self.navigationController.navigationBarHidden = FALSE;
+
+    if ([[segue identifier] isEqualToString:@"searchViewSegue"])
+    {
+       SSSearchViewController *searchViewController = [segue destinationViewController];
+        // Pass any objects to the view controller here, like...
+        //  [vc setMyObjectHere:object];
+    }  else if ([[segue identifier] isEqualToString:@"paymentViewSegue"]){
+        
+       SSPaymentViewController *paymentViewController = [segue destinationViewController];
+    }
 }
 @end
