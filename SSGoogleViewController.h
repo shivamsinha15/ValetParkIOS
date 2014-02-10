@@ -7,10 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <GoogleMaps/GoogleMaps.h>
+
+
+
+
 
 @interface SSGoogleViewController : UIViewController
 
 @property(strong,nonatomic) NSMutableArray *peSpaces;
 @property(strong,nonatomic) NSMutableArray *peRules;
+- (void)setCurrentLocationAsCenterMapView;
 
 @end

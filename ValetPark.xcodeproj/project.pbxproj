@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		699011AD1897CCE300496777 /* SSPESpaceModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 699011AC1897CCE300496777 /* SSPESpaceModel.m */; };
 		699011B01897CE9900496777 /* SSPERuleModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 699011AF1897CE9900496777 /* SSPERuleModel.m */; };
+		6990819118A63C2A00F1383B /* SSGoogleLocationModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 6990819018A63C2A00F1383B /* SSGoogleLocationModel.m */; };
 		69DD4A6318971EB000DB7365 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69DD4A6218971EB000DB7365 /* Foundation.framework */; };
 		69DD4A6518971EB000DB7365 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69DD4A6418971EB000DB7365 /* CoreGraphics.framework */; };
 		69DD4A6718971EB000DB7365 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69DD4A6618971EB000DB7365 /* UIKit.framework */; };
@@ -62,6 +63,8 @@
 		699011AC1897CCE300496777 /* SSPESpaceModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSPESpaceModel.m; sourceTree = "<group>"; };
 		699011AE1897CE9900496777 /* SSPERuleModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSPERuleModel.h; sourceTree = "<group>"; };
 		699011AF1897CE9900496777 /* SSPERuleModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSPERuleModel.m; sourceTree = "<group>"; };
+		6990818F18A63C2A00F1383B /* SSGoogleLocationModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSGoogleLocationModel.h; sourceTree = "<group>"; };
+		6990819018A63C2A00F1383B /* SSGoogleLocationModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSGoogleLocationModel.m; sourceTree = "<group>"; };
 		69DD4A5F18971EB000DB7365 /* ValetPark.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ValetPark.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		69DD4A6218971EB000DB7365 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		69DD4A6418971EB000DB7365 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -147,6 +150,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6990818E18A63BE800F1383B /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				699011AB1897CCE300496777 /* SSPESpaceModel.h */,
+				699011AC1897CCE300496777 /* SSPESpaceModel.m */,
+				699011AE1897CE9900496777 /* SSPERuleModel.h */,
+				699011AF1897CE9900496777 /* SSPERuleModel.m */,
+				6990818F18A63C2A00F1383B /* SSGoogleLocationModel.h */,
+				6990819018A63C2A00F1383B /* SSGoogleLocationModel.m */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
 		69DD4A5618971EB000DB7365 = {
 			isa = PBXGroup;
 			children = (
@@ -194,12 +210,9 @@
 		69DD4A6818971EB000DB7365 /* ValetPark */ = {
 			isa = PBXGroup;
 			children = (
+				6990818E18A63BE800F1383B /* Models */,
 				69DD4AB518972A6200DB7365 /* SSGoogleViewController.h */,
 				69DD4AB618972A6200DB7365 /* SSGoogleViewController.m */,
-				699011AB1897CCE300496777 /* SSPESpaceModel.h */,
-				699011AE1897CE9900496777 /* SSPERuleModel.h */,
-				699011AF1897CE9900496777 /* SSPERuleModel.m */,
-				699011AC1897CCE300496777 /* SSPESpaceModel.m */,
 				69DD4A7118971EB000DB7365 /* SSAppDelegate.h */,
 				69DD4A7218971EB000DB7365 /* SSAppDelegate.m */,
 				69DD4A7418971EB000DB7365 /* Images.xcassets */,
@@ -365,6 +378,7 @@
 				69DD4AB718972A6200DB7365 /* SSGoogleViewController.m in Sources */,
 				69DD4ABA18972D2A00DB7365 /* ASValueTrackingSlider.m in Sources */,
 				699011AD1897CCE300496777 /* SSPESpaceModel.m in Sources */,
+				6990819118A63C2A00F1383B /* SSGoogleLocationModel.m in Sources */,
 				69DD4A7318971EB000DB7365 /* SSAppDelegate.m in Sources */,
 				69DD572818991769005E11D0 /* SSNavigationControlerViewController.m in Sources */,
 				699011B01897CE9900496777 /* SSPERuleModel.m in Sources */,

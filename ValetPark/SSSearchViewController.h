@@ -9,8 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface SSSearchViewController : UIViewController <UITableViewDelegate, UITableViewDataSource,UISearchBarDelegate>
-@property(nonatomic,strong) NSArray *titlesArray;
-
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
+@property (strong, nonatomic) NSMutableArray *googleLocationModels;
 
 @end

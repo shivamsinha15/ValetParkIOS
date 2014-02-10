@@ -9,7 +9,15 @@
 #import "SSGoogleViewController.h"
 #import "SSPESpaceModel.h"
 #import "SSPERuleModel.h"
-#import <GoogleMaps/GoogleMaps.h>
+//#import <GoogleMaps/GoogleMaps.h>
+
+@protocol CheckTableControllerDelegate
+
+-(void)checkTriggeredAtIndex:(int)index;
+-(void)unCheckTriggeredAtIndex:(int)index;
+
+@end
+
 
 @interface SSGoogleViewController ()
 
@@ -165,5 +173,16 @@
     marker.snippet = @"Australia";
     marker.map = mapView_;
 }
+
+
+//Two ways to implement: http://stackoverflow.com/questions/15026923/how-to-setcenter-mapview-with-location-in-google-maps-sdk-for-ios
+- (void)setCurrentLocationAsCenterMapView{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    CLLocationDegrees lat = [[defaults objectForKey:@"currentLat"] doubleValue];
+    CLLocationDegrees lng = [[defaults objectForKey:@"currentLng"] doubleValue];
+    CLLocationCoordinate2D currentLoc = CLLocationCoordinate2DMake(lat, lng);
+    [mapView_ animateToLocation:currentLoc];
+}
+
 
 @end

@@ -1,4 +1,4 @@
-//
+         //
 //  SSMainViewController.h
 //  ValetPark
 //
@@ -7,10 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <CoreLocation/CoreLocation.h>
+#import "SSGoogleLocationModel.h"
 @class SSAppDelegate;
 
-@interface SSMainViewController : UIViewController
 
+@interface SSMainViewController : UIViewController <CLLocationManagerDelegate>
 
+//http://stackoverflow.com/questions/13491411/iphone-app-how-to-get-the-current-location-only-once-and-store-that-to-be-used
+@property(nonatomic,retain) CLLocationManager *locationManager;
+
+- (IBAction)currentLocationButton:(id)sender;
+-(void)setMapToCurrentLocation;
 
 @end

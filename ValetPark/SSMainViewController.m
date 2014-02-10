@@ -10,9 +10,15 @@
 #import "ASValueTrackingSlider.h"
 #import "SSSearchViewController.h"
 #import "SSPaymentViewController.h"
+#import "SSGoogleViewController.h"
 
 
-@interface SSMainViewController ()
+@interface SSMainViewController (){
+    NSUserDefaults *defaults;
+    SSGoogleViewController *googleViewController;
+    SSSearchViewController *searchViewController;
+    SSPaymentViewController *paymentViewController;
+}
 @property (weak, nonatomic) IBOutlet ASValueTrackingSlider *timeSlider;
 
 @end
@@ -32,9 +38,9 @@
 {
     [super viewDidLoad];
     [self initTimeSlider];
+    [self initLocationManager];
+    defaults = [NSUserDefaults standardUserDefaults];
     self.navigationController.navigationBarHidden = TRUE;
-    
-
 }
 
 - (void)didReceiveMemoryWarning
@@ -57,12 +63,88 @@
 
     if ([[segue identifier] isEqualToString:@"searchViewSegue"])
     {
-       SSSearchViewController *searchViewController = [segue destinationViewController];
-        // Pass any objects to the view controller here, like...
-        //  [vc setMyObjectHere:object];
+        if(!searchViewController){
+                searchViewController = [segue destinationViewController];
+        }
     }  else if ([[segue identifier] isEqualToString:@"paymentViewSegue"]){
-        
-       SSPaymentViewController *paymentViewController = [segue destinationViewController];
+         if(!paymentViewController){
+                 paymentViewController = [segue destinationViewController];
+         }
+    }  else if ([[segue identifier] isEqualToString:@"googleViewSegue"]){
+         if(!googleViewController){
+            googleViewController = [segue destinationViewController];
+         }
     }
+
 }
+
+
+#pragma mark CoreLocation
+
+//Delegated Method CLLocationManagerDelegate
+- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
+{
+        [manager  stopUpdatingLocation];
+        CLLocation* location = [locations lastObject]; // locations is guaranteed to have at least one object
+        double latitude = location.coordinate.latitude;
+        double longitude = location.coordinate.longitude;
+        NSNumber *currentLat = [NSNumber numberWithDouble:latitude];
+        NSNumber *currentLng = [NSNumber numberWithDouble:longitude];
+        [defaults setObject:currentLat forKey:@"currentLat"];
+        [defaults setObject:currentLng forKey:@"currentLng"];
+    [self setMapToCurrentLocation];
+}
+
+-(void)setMapToCurrentLocation{
+    [googleViewController setCurrentLocationAsCenterMapView];
+}
+
+- (void)locationManager:(CLLocationManager *)manager
+       didFailWithError:(NSError *)error
+{
+   [manager stopUpdatingLocation];
+    NSLog(@"error%@",error);
+    switch([error code])
+    {
+        case kCLErrorNetwork: // general, network-related error
+        {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"please check your network connection or that you are not in airplane mode" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+            [alert show];
+        }
+            break;
+        case kCLErrorDenied:{
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"user has denied to use current Location " delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+            [alert show];
+        }
+            break;
+        default:
+        {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"unknown network error" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+            [alert show];
+        }
+            break;
+    }
+
+}
+
+- (void)initLocationManager
+{
+        self.locationManager = [[CLLocationManager alloc] init];
+        [self.locationManager setDelegate:self];
+        self.locationManager.distanceFilter = kCLDistanceFilterNone;
+        self.locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters; //kCLDistanceFilterNone; // 100 m
+}
+
+- (IBAction)currentLocationButton:(id)sender {
+    [self.locationManager startUpdatingLocation];
+}
+
+//Potentially alternative way to received lat/lng
+//- (NSString *)deviceLocation {
+//    NSString *theLocation = [NSString stringWithFormat:@"latitude: %f longitude: %f", self.locationManager.location.coordinate.latitude, self.locationManager.location.coordinate.longitude];
+//    return theLocation;
+//}
+
+
+
 @end
