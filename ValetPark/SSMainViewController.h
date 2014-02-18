@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <CoreLocation/CoreLocation.h>
 #import "SSGoogleLocationModel.h"
+#import "ASValueTrackingSlider.h"
 @class SSAppDelegate;
 
 
@@ -16,6 +17,8 @@
 
 //http://stackoverflow.com/questions/13491411/iphone-app-how-to-get-the-current-location-only-once-and-store-that-to-be-used
 @property(nonatomic,retain) CLLocationManager *locationManager;
+@property (weak, nonatomic) IBOutlet ASValueTrackingSlider *timeSlider;
+
 
 - (IBAction)currentLocationButton:(id)sender;
 -(void)setMapToCurrentLocation;

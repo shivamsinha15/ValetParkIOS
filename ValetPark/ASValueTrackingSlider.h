@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol ASValueTrackingSliderDelegate;
+
 @interface ASValueTrackingSlider : UISlider
 @property (strong, nonatomic) UIColor *textColor;
 @property (strong, nonatomic) UIFont *font;
@@ -31,8 +33,21 @@
 // DisplayDate
 @property (strong,nonatomic)NSDate *currentTime;
 @property (strong,nonatomic)NSDateFormatter *dateFormatter;
-@property (weak,nonatomic)NSString *timeStamp;
-@property (weak,nonatomic)NSDate *timeAtSliderValue;
+@property (strong,nonatomic)NSString *timeStamp;
+@property (strong,nonatomic)NSDate *timeAtSliderValue;
 @property NSTimeInterval timeIntervalAtSliderValue;
 
-@end
+
+@property (nonatomic, weak) id<ASValueTrackingSliderDelegate> delegate;
+
+@end //Interface End
+
+
+@protocol ASValueTrackingSliderDelegate <NSObject>
+//@required
+//-(void)requiredDelegateMethod;
+
+@optional
+-(void)selectedTimeHasBeenUpdated:(NSDate *)selectedTime setTimeLabel:(NSString *)timeLabel;
+
+@end // end of delegate protocol

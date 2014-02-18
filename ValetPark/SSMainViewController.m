@@ -7,7 +7,6 @@
 //
 
 #import "SSMainViewController.h"
-#import "ASValueTrackingSlider.h"
 #import "SSSearchViewController.h"
 #import "SSPaymentViewController.h"
 #import "SSGoogleViewController.h"
@@ -19,7 +18,6 @@
     SSSearchViewController *searchViewController;
     SSPaymentViewController *paymentViewController;
 }
-@property (weak, nonatomic) IBOutlet ASValueTrackingSlider *timeSlider;
 
 @end
 
@@ -36,6 +34,7 @@
 
 - (void)viewDidLoad
 {
+    
     [super viewDidLoad];
     [self initTimeSlider];
     [self initLocationManager];
@@ -73,9 +72,9 @@
     }  else if ([[segue identifier] isEqualToString:@"googleViewSegue"]){
          if(!googleViewController){
             googleViewController = [segue destinationViewController];
+            [googleViewController setMainViewController:self];
          }
     }
-
 }
 
 

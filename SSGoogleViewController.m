@@ -6,17 +6,11 @@
 //  Copyright (c) 2014 SaxStudios. All rights reserved.
 //
 
+#import "SSMainViewController.h"
 #import "SSGoogleViewController.h"
 #import "SSPESpaceModel.h"
 #import "SSPERuleModel.h"
-//#import <GoogleMaps/GoogleMaps.h>
 
-@protocol CheckTableControllerDelegate
-
--(void)checkTriggeredAtIndex:(int)index;
--(void)unCheckTriggeredAtIndex:(int)index;
-
-@end
 
 
 @interface SSGoogleViewController ()
@@ -27,7 +21,9 @@
     GMSMapView *mapView_;
     UIColor *red;
     UIColor *green;
-    
+    NSDate *today;
+    NSDateFormatter *timeDateFormatter;
+    NSUserDefaults *standardDefaults;
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -41,7 +37,14 @@
 
 - (void)viewDidLoad
 {
+    
     [super viewDidLoad];
+    today = [NSDate date];
+    timeDateFormatter = [[NSDateFormatter alloc] init];
+    [timeDateFormatter setDateFormat:@"HH:mm:ss"];
+    
+    standardDefaults = [NSUserDefaults standardUserDefaults];
+    [self setASValueSliderTrackingDelegate];
     [self displayMap];
     
     @try {
@@ -132,11 +135,35 @@
         peRule.fromDay = [peRuleData objectForKey:@"fromDay"];
         peRule.toDay = [peRuleData objectForKey:@"toDay"];
         peRule.cost= [[peRuleData objectForKey:@"cost"] doubleValue];
-        peRule.fromTime= [peRuleData objectForKey:@"fromTime"];
-        peRule.toTime= [peRuleData objectForKey:@"toTime"];
-        peRule.timeLimit=[peRuleData objectForKey:@"timeLimit"];
+        peRule.fromTimeString= [peRuleData objectForKey:@"fromTime"];
+        peRule.toTimeString= [peRuleData objectForKey:@"toTime"];
+        peRule.timeLimitString=[peRuleData objectForKey:@"timeLimit"];
+        [self populateFromAndToTime:&peRule];
         [self.peRules addObject:peRule];
     }
+}
+
+
+- (void) populateFromAndToTime:(SSPERuleModel**)peRule{
+    NSDate *fromTime = [self getTime: [*peRule fromTimeString]];
+    NSDate *toTime = [self getTime: [*peRule toTimeString]];
+    [*peRule setFromTime:fromTime];
+    [*peRule setToTime:toTime];
+
+}
+
+
+// Time Format: http://54.200.11.164/parking-engine/PERule/all
+//http://stackoverflow.com/questions/12624025/nsdate-but-no-nstime-how-to-convert-a-string-representation-of-time-without-d
+- (NSDate *) getTime:(NSString *) timeAsString {
+    
+
+    NSArray *removedMilliSec = [timeAsString componentsSeparatedByString: @"."];
+    NSString *hhmmssAsString = removedMilliSec[0];
+    NSDate *fromTime = [timeDateFormatter dateFromString:hhmmssAsString];
+    
+
+    return fromTime;
 }
 
 - (NSArray *) getModelArray:(NSString *) urlString {
@@ -182,6 +209,32 @@
     CLLocationDegrees lng = [[defaults objectForKey:@"currentLng"] doubleValue];
     CLLocationCoordinate2D currentLoc = CLLocationCoordinate2DMake(lat, lng);
     [mapView_ animateToLocation:currentLoc];
+}
+
+-(void)selectedTimeHasBeenUpdated:(NSDate *)selectedTime setTimeLabel:(NSString *)timeLabel{
+    NSMutableString *output = [NSMutableString stringWithCapacity:150];
+    [output appendString: @"Google View Controller ASValueTrackingSliderDelegateCalled "];
+    [output appendString: timeLabel];
+    NSLog(@"%@",output);
+    [self checkIfRulesAreApplicable:selectedTime setTimeLabel:timeLabel];
+}
+
+
+-(void)checkIfRulesAreApplicable:selectedTime setTimeLabel:timeLabel{
+    for (SSPERuleModel *peRule in self.peRules){
+        [peRule ruleIsApplicable:selectedTime];
+    }
+}
+
+-(void) setASValueSliderTrackingDelegate{
+    // Both these methods for getting the MainViewController returned back nil:
+    //SSMainViewController *rootViewController = (SSMainViewController *)[self.navigationController.viewControllers objectAtIndex: 0];
+    
+    //http://stackoverflow.com/questions/5968703/how-to-find-root-uiviewcontroller
+    //UIWindow *window = [UIApplication sharedApplication].keyWindow;
+    //SSMainViewController *rootViewController = (SSMainViewController *)window.rootViewController;
+    
+    [self.mainViewController.timeSlider setDelegate:self];
 }
 
 

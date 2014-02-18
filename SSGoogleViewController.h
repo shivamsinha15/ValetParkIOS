@@ -8,15 +8,17 @@
 
 #import <UIKit/UIKit.h>
 #import <GoogleMaps/GoogleMaps.h>
+#import "ASValueTrackingSlider.h"
+#import "SSMainViewController.h"
 
 
 
 
 
-@interface SSGoogleViewController : UIViewController
+@interface SSGoogleViewController : UIViewController <ASValueTrackingSliderDelegate>
 
 @property(strong,nonatomic) NSMutableArray *peSpaces;
 @property(strong,nonatomic) NSMutableArray *peRules;
 - (void)setCurrentLocationAsCenterMapView;
-
+@property(strong,nonatomic) SSMainViewController *mainViewController;
 @end

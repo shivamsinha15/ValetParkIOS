@@ -434,8 +434,18 @@
 - (void)endTrackingWithTouch:(UITouch *)touch withEvent:(UIEvent *)event
 {
     [super endTrackingWithTouch:touch withEvent:event];
+    [self callCustomDelegate];
     [self positionAndUpdatePopUpView];
     [self hidePopUp];
+}
+
+- (void) callCustomDelegate{
+    //Responds to selector usage: http://stackoverflow.com/questions/3697058/when-to-use-respondstoselector-in-objective-c
+    //Selector with multiple methods: http://stackoverflow.com/questions/2732863/objective-c-check-if-a-method-exist
+    if (self.delegate && [self.delegate respondsToSelector:@selector(selectedTimeHasBeenUpdated:setTimeLabel:)]) {
+        //self.timeStamp = [self.dateFormatter stringFromDate:self.timeAtSliderValue];
+        [self.delegate selectedTimeHasBeenUpdated:self.timeAtSliderValue setTimeLabel:self.timeStamp];
+    }
 }
 
 

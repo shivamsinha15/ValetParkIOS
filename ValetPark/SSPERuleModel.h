@@ -13,15 +13,21 @@
 @property int id;
 @property (strong,nonatomic) NSString *fromDay;
 @property (strong,nonatomic) NSString *toDay;
-@property (strong,nonatomic) NSString *fromTime;
-@property (strong,nonatomic) NSString *toTime;
-@property (strong,nonatomic) NSString *timeLimit;
+@property (strong,nonatomic) NSString *fromTimeString;
+@property (strong,nonatomic) NSString *toTimeString;
+@property (strong,nonatomic) NSString *timeLimitString;
+@property (strong,nonatomic) NSDate *fromTime;
+@property (strong,nonatomic) NSDate *toTime;
+
 
 @property (strong,nonatomic) NSString *parkingSpaceType;
 @property double cost;
 
 
 @property BOOL occupied;
+
+- (BOOL) ruleIsApplicable:(NSDate *)atTimeDate;
+
 
 
 @end
