@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VariablesViewState
+   version = "1.0">
+   <ContextStates>
+      <ContextState
+         contextName = "-[SSGoogleViewController checkIfRulesAreApplicable:setTimeLabel:]:SSGoogleViewController.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "-[SSPERuleModel ruleIsApplicable:]:SSPERuleModel.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.toTime">
+            </PersistentString>
+            <PersistentString
+               value = "self.fromTime">
+            </PersistentString>
+            <PersistentString
+               value = "atTimeDate">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "-[SSGoogleViewController getReferenceTimeFromDate:]:SSGoogleViewController.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "[NSDate dateWithTimeIntervalSinceReferenceDate:0]">
+            </PersistentString>
+            <PersistentString
+               value = "[NSDate dateWithTimeIntervalSinceReferenceDate:secondsBetween-39600]">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+   </ContextStates>
+</VariablesViewState>

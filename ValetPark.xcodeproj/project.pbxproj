@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6980209D18B98F5C00B63BAB /* NSString+Common.m in Sources */ = {isa = PBXBuildFile; fileRef = 6980209C18B98F5C00B63BAB /* NSString+Common.m */; };
 		699011AD1897CCE300496777 /* SSPESpaceModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 699011AC1897CCE300496777 /* SSPESpaceModel.m */; };
 		699011B01897CE9900496777 /* SSPERuleModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 699011AF1897CE9900496777 /* SSPERuleModel.m */; };
 		6990819118A63C2A00F1383B /* SSGoogleLocationModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 6990819018A63C2A00F1383B /* SSGoogleLocationModel.m */; };
@@ -59,6 +60,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6980209B18B98F5C00B63BAB /* NSString+Common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Common.h"; sourceTree = "<group>"; };
+		6980209C18B98F5C00B63BAB /* NSString+Common.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Common.m"; sourceTree = "<group>"; };
 		699011AB1897CCE300496777 /* SSPESpaceModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSPESpaceModel.h; sourceTree = "<group>"; };
 		699011AC1897CCE300496777 /* SSPESpaceModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSPESpaceModel.m; sourceTree = "<group>"; };
 		699011AE1897CE9900496777 /* SSPERuleModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSPERuleModel.h; sourceTree = "<group>"; };
@@ -150,6 +153,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6980209A18B98F2800B63BAB /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				6980209B18B98F5C00B63BAB /* NSString+Common.h */,
+				6980209C18B98F5C00B63BAB /* NSString+Common.m */,
+			);
+			name = Utility;
+			sourceTree = "<group>";
+		};
 		6990818E18A63BE800F1383B /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -210,6 +222,7 @@
 		69DD4A6818971EB000DB7365 /* ValetPark */ = {
 			isa = PBXGroup;
 			children = (
+				6980209A18B98F2800B63BAB /* Utility */,
 				6990818E18A63BE800F1383B /* Models */,
 				69DD4AB518972A6200DB7365 /* SSGoogleViewController.h */,
 				69DD4AB618972A6200DB7365 /* SSGoogleViewController.m */,
@@ -377,6 +390,7 @@
 				69DD4AB1189729DE00DB7365 /* SSMainViewController.m in Sources */,
 				69DD4AB718972A6200DB7365 /* SSGoogleViewController.m in Sources */,
 				69DD4ABA18972D2A00DB7365 /* ASValueTrackingSlider.m in Sources */,
+				6980209D18B98F5C00B63BAB /* NSString+Common.m in Sources */,
 				699011AD1897CCE300496777 /* SSPESpaceModel.m in Sources */,
 				6990819118A63C2A00F1383B /* SSGoogleLocationModel.m in Sources */,
 				69DD4A7318971EB000DB7365 /* SSAppDelegate.m in Sources */,

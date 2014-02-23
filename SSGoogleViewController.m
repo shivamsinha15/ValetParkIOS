@@ -10,6 +10,7 @@
 #import "SSGoogleViewController.h"
 #import "SSPESpaceModel.h"
 #import "SSPERuleModel.h"
+#import "NSString+Common.h"
 
 
 
@@ -65,7 +66,10 @@
 
 -(void) showPeSpacesOnMap{
    for(SSPESpaceModel *peSpace in self.peSpaces){
-        [self drawPloyLines:peSpace.startLat :peSpace.startLng :peSpace.endLat :peSpace.endLng :peSpace.occupied];
+       
+       GMSPolyline *path =[self getPath:peSpace.startLat :peSpace.startLng :peSpace.endLat :peSpace.endLng];
+       [peSpace setPolyline: path];
+       [self drawPloyLines :path :peSpace.occupied];
     }
 
 //    
@@ -73,18 +77,8 @@
 //    [self drawPloyLines:peSpace.startLat :peSpace.startLng :peSpace.endLat :peSpace.endLng :peSpace.occupied];
 }
 
--(void) drawPloyLines: (double)startLat :(double)startLng :(double)endLat :(double)endLng :(BOOL)occupied{
-        GMSMutablePath *path = [GMSMutablePath path];
-//        NSLog(@"startLat %e",startLat);
-//        NSLog(@"startLng %e",startLng);
-//        NSLog(@"endLat %e",endLat);
-//        NSLog(@"endLng %e",endLng);
-       [path addLatitude:startLat longitude:startLng];
-       [path addLatitude:endLat longitude:endLng];
+-(void) drawPloyLines: (GMSPolyline *)polyline :(BOOL)occupied{
 
-    //uicolor.org
-       GMSPolyline *polyline = [GMSPolyline polylineWithPath:path];
-    
     if(occupied){
         polyline.strokeColor = red;
     } else {
@@ -94,6 +88,19 @@
     polyline.strokeWidth = 10.f;
     polyline.map = mapView_;
 }
+
+
+-(GMSPolyline *) getPath:(double)startLat :(double)startLng :(double)endLat :(double)endLng{
+    GMSMutablePath *path = [GMSMutablePath path];
+    //        NSLog(@"startLat %e",startLat);
+    //        NSLog(@"startLng %e",startLng);
+    //        NSLog(@"endLat %e",endLat);
+    //        NSLog(@"endLng %e",endLng);
+    [path addLatitude:startLat longitude:startLng];
+    [path addLatitude:endLat longitude:endLng];
+    return [GMSPolyline polylineWithPath:path];
+}
+
 
 - (void) initaliseParkingData{
     [self initColors];
@@ -145,26 +152,42 @@
 
 
 - (void) populateFromAndToTime:(SSPERuleModel**)peRule{
-    NSDate *fromTime = [self getTime: [*peRule fromTimeString]];
-    NSDate *toTime = [self getTime: [*peRule toTimeString]];
+    NSDate *fromTime = [self getReferenceTimeFromString: [*peRule fromTimeString]];
+    NSDate *toTime = [self getReferenceTimeFromString: [*peRule toTimeString]];
     [*peRule setFromTime:fromTime];
     [*peRule setToTime:toTime];
-
 }
 
 
 // Time Format: http://54.200.11.164/parking-engine/PERule/all
 //http://stackoverflow.com/questions/12624025/nsdate-but-no-nstime-how-to-convert-a-string-representation-of-time-without-d
-- (NSDate *) getTime:(NSString *) timeAsString {
+- (NSDate *) getReferenceTimeFromString:(NSString *) timeAsString {
     
-
+    NSMutableString *hhmmssAsString = [NSMutableString stringWithCapacity:150];;
+    
+    if([timeAsString contains:@"."]){
     NSArray *removedMilliSec = [timeAsString componentsSeparatedByString: @"."];
-    NSString *hhmmssAsString = removedMilliSec[0];
+     hhmmssAsString = removedMilliSec[0];
+    } else {
+        [hhmmssAsString appendString:timeAsString];
+    }
     NSDate *fromTime = [timeDateFormatter dateFromString:hhmmssAsString];
-    
-
     return fromTime;
 }
+
+- (NSDate *) getReferenceTimeFromDate:(NSDate *) selectedDateTime {
+    NSString *timeAsString = [timeDateFormatter stringFromDate:selectedDateTime];
+    return [self getReferenceTimeFromString: timeAsString];
+}
+
+
+- (NSDate *) getStartOfSelectedDateTime: selectedDateTime {
+    NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+    NSDateComponents *components = [calendar components:NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit fromDate:selectedDateTime];
+    NSDate *startOfSelectedDate = [calendar dateFromComponents:components];
+    return startOfSelectedDate;
+}
+
 
 - (NSArray *) getModelArray:(NSString *) urlString {
    
@@ -216,15 +239,32 @@
     [output appendString: @"Google View Controller ASValueTrackingSliderDelegateCalled "];
     [output appendString: timeLabel];
     NSLog(@"%@",output);
-    [self checkIfRulesAreApplicable:selectedTime setTimeLabel:timeLabel];
+    NSDate *timeFromReferenceDate = [self getReferenceTimeFromDate:selectedTime];
+    [self checkIfRulesAreApplicable:timeFromReferenceDate setTimeLabel:timeLabel];
 }
 
 
 -(void)checkIfRulesAreApplicable:selectedTime setTimeLabel:timeLabel{
+     NSMutableArray *applicableRules = [NSMutableArray array];
     for (SSPERuleModel *peRule in self.peRules){
-        [peRule ruleIsApplicable:selectedTime];
+        if([peRule ruleIsApplicable:selectedTime day:[self dayOfWeek: timeLabel]]){
+            [applicableRules addObject:peRule ];
+        }
     }
+    [self updatePESpaces:applicableRules];
 }
+
+//Note DateFormatter For ASValueTrackingSlider @"EEE hh':'mm a"];  = Sun 10:07 AM
+-(NSString *) dayOfWeek:(NSString *) timeLabel{
+    NSArray *removedTime = [timeLabel componentsSeparatedByString: @" "];
+    return removedTime[0];
+}
+
+-(void)updatePESpaces:(NSArray *) applicableRules{
+  
+    
+}
+
 
 -(void) setASValueSliderTrackingDelegate{
     // Both these methods for getting the MainViewController returned back nil:

@@ -7,12 +7,23 @@
 //
 
 #import "SSPERuleModel.h"
+#import "SSPERuleModel.h"
+#import "NSString+Common.h"
 
 @implementation SSPERuleModel
 
-- (BOOL)ruleIsApplicable:(NSDate *)atTimeDate;{
-    return [SSPERuleModel date:atTimeDate isBetweenDate:self.fromTime andDate:self.toTime];
+- (BOOL)ruleIsApplicable:(NSDate *)atTimeDate day:(NSString *) dayOfWeek{
+    BOOL timeIsInBetweenRuleToFromTimes = [SSPERuleModel date:atTimeDate isBetweenDate:self.fromTime andDate:self.toTime];
+    return (timeIsInBetweenRuleToFromTimes && [self selectedDayMatchToOrFromRuleDay: dayOfWeek]);
 }
+
+-(BOOL)selectedDayMatchToOrFromRuleDay:(NSString *) dayOfWeek{
+    if([self.fromDay contains: dayOfWeek] || [self.toDay contains: dayOfWeek]){
+        return YES;
+    }
+    return NO;
+}
+
 
 //http://stackoverflow.com/questions/1072848/how-to-check-if-an-nsdate-occurs-between-two-other-nsdates
 + (BOOL)date:(NSDate*)date isBetweenDate:(NSDate*)beginDate andDate:(NSDate*)endDate

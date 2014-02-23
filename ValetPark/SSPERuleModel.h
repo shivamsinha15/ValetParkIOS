@@ -26,7 +26,8 @@
 
 @property BOOL occupied;
 
-- (BOOL) ruleIsApplicable:(NSDate *)atTimeDate;
+- (BOOL) ruleIsApplicable:(NSDate *)atTimeDate day:(NSString *) dayOfWeek;
+- (BOOL)selectedDayMatchToOrFromRuleDay:(NSString *) dayOfWeek;
 
 
 

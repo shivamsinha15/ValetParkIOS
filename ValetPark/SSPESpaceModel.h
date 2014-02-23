@@ -7,6 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <GoogleMaps/GoogleMaps.h>
+
 
 @interface SSPESpaceModel : NSObject
 
@@ -20,5 +22,6 @@
 @property (strong,nonatomic) NSString *address;
 @property BOOL occupied;
 @property (strong,nonatomic) NSArray *ruleIds;
+@property (strong,nonatomic) GMSPolyline *polyline;
 
 @end
