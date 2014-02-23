@@ -260,9 +260,17 @@
     return removedTime[0];
 }
 
+//Just for now if rule is applicable then apply to all parkingSpaces
 -(void)updatePESpaces:(NSArray *) applicableRules{
-  
     
+    for(SSPESpaceModel *peSpace in self.peSpaces){
+            if(applicableRules.count > 0){
+                [self drawPloyLines:peSpace.polyline :YES];
+            } else {
+                [self drawPloyLines:peSpace.polyline :NO];
+            }
+        }
+
 }
 
 
